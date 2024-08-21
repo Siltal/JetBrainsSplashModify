@@ -21,7 +21,7 @@
      ```
 
 4. **运行脚本**:
-   - 确保所有配置都已正确设置后，运行 `main.py`。脚本将通过选项引导您操作。
+   - 确保所有配置都已正确设置后，运行 `main.py`或 [Release](https://github.com/Siltal/JetBrainsSplashModify/releases) 中的exe。脚本将通过选项引导您操作。
 
 ## 注意事项
 
