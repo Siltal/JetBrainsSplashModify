@@ -273,6 +273,7 @@ def main(ima_path):
             clean_cache_image(win_user, **config)
         case 'restore':
             restore(installation, **config)
+            clean_cache_image(win_user, **config)
 
 
 if __name__ == '__main__':
