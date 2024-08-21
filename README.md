@@ -1,7 +1,7 @@
 # JetBrainsSplashModify
 
 ## 简介
-> [!TIP]
+> [!NOTE]
 > Windows only.
 
 `JetBrainsSplashModify` 是一个用于修改 JetBrains IDE 启动画面（Splash Screen）和其他相关资源的 Python 工具。通过这个工具，用户可以轻松替换 JetBrains 软件中的默认图片。
