@@ -256,7 +256,7 @@ def main(ima_path):
         json_data = f.read()
     data_dict: dict = json.loads(json_data)
 
-    win_user = data_dict.pop("winUser")
+    win_user = data_dict.pop("win_user")
 
     category = user_select(list(data_dict.keys()), "> Please select category:")
     program_name = user_select(list(data_dict[category]), "> Please select product:")

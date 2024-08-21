@@ -1,5 +1,5 @@
 {
-  "winUser": "Siltal",
+  "win_user": "Siltal",
   "JetBrains": {
     "IntelliJ IDEA": {
       "source": "lib/product.jar",
