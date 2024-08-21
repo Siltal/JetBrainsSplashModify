@@ -1,0 +1,91 @@
+{
+  "winUser": "Siltal",
+  "JetBrains": {
+    "IntelliJ IDEA": {
+      "source": "lib/product.jar",
+      "items": [
+        "idea_logo.png",
+        "idea_logo@2x.png"
+      ],
+      "cache": [
+        "C:/Users/%s/AppData/Local/JetBrains",
+        "IntelliJIdea",
+        "splash"
+      ]
+    },
+    "Clion": {
+      "source": "lib/product.jar",
+      "items": [
+        "artwork/clion_splash.png",
+        "artwork/clion_splash@2x.png"
+      ],
+      "cache": [
+        "C:/Users/%s/AppData/Local/JetBrains",
+        "CLion",
+        "splash"
+      ]
+    },
+    "PyCharm": {
+      "source": "lib/app.jar",
+      "items": [
+        "pycharm_logo.png",
+        "pycharm_logo.png@2x.png"
+      ],
+      "cache": [
+        "C:/Users/%s/AppData/Local/JetBrains",
+        "PyCharm",
+        "splash"
+      ]
+    },
+    "Rider": {
+      "source": "lib/app.jar",
+      "items": [
+        "rider/artwork/release/splash.png",
+        "rider/artwork/release/splash@2x.png"
+      ],
+      "cache": [
+        "C:/Users/%s/AppData/Local/JetBrains",
+        "Rider",
+        "splash"
+      ]
+    },
+    "RustRover": {
+      "source": "lib/app.jar",
+      "items": [
+        "rider/artwork/release/splash.png",
+        "rider/artwork/release/splash@2x.png"
+      ],
+      "cache": [
+        "C:/Users/%s/AppData/Local/JetBrains",
+        "RustRover",
+        "splash"
+      ]
+    },
+    "WebStorm": {
+      "source": "lib/app.jar",
+      "items": [
+        "artwork/webide_logo.png",
+        "artwork/webide_logo@2x.png"
+      ],
+      "cache": [
+        "C:/Users/%s/AppData/Local/JetBrains",
+        "WebStorm",
+        "splash"
+      ]
+    }
+  },
+  "Android": {
+    "Android Studio": {
+      "source": "lib/resources.jar",
+      "items": [
+        "artwork/studio_splash.png",
+        "artwork/studio_splash@2x.png"
+      ],
+      "cache": [
+        "C:/Users/%s/AppData/Local/Google",
+        "AndroidStudio",
+        "splash"
+      ]
+    }
+  }
+}
