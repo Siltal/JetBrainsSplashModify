@@ -8,6 +8,7 @@ from io import BytesIO
 from typing import Tuple
 
 from PIL import Image
+from select import select
 
 
 
