@@ -29,7 +29,7 @@
       "source": "lib/app.jar",
       "items": [
         "pycharm_logo.png",
-        "pycharm_logo.png@2x.png"
+        "pycharm_logo@2x.png"
       ],
       "cache": [
         "C:/Users/%s/AppData/Local/JetBrains",
@@ -37,7 +37,7 @@
         "splash"
       ]
     },
-    "Rider": {
+    "JetBrains Rider": {
       "source": "lib/app.jar",
       "items": [
         "rider/artwork/release/splash.png",
@@ -50,10 +50,10 @@
       ]
     },
     "RustRover": {
-      "source": "lib/app.jar",
+      "source": "lib/product.jar",
       "items": [
-        "rider/artwork/release/splash.png",
-        "rider/artwork/release/splash@2x.png"
+        "artwork/splash.png",
+        "artwork/splash@2x.png"
       ],
       "cache": [
         "C:/Users/%s/AppData/Local/JetBrains",
@@ -70,6 +70,42 @@
       "cache": [
         "C:/Users/%s/AppData/Local/JetBrains",
         "WebStorm",
+        "splash"
+      ]
+    },
+    "PhpStorm": {
+      "source": "lib/app.jar",
+      "items": [
+        "artwork/webide_logo.png",
+        "artwork/webide_logo@2x.png"
+      ],
+      "cache": [
+        "C:/Users/%s/AppData/Local/JetBrains",
+        "PhpStorm",
+        "splash"
+      ]
+    },
+    "GoLand": {
+      "source": "lib/product.jar",
+      "items": [
+        "artwork/splash.png",
+        "artwork/splash@2x.png"
+      ],
+      "cache": [
+        "C:/Users/%s/AppData/Local/JetBrains",
+        "GoLand",
+        "splash"
+      ]
+    },
+    "RubyMine": {
+      "source": "lib/product-client.jar",
+      "items": [
+        "artwork/rubymine_logo.png",
+        "artwork/rubymine_logo@2x.png"
+      ],
+      "cache": [
+        "C:/Users/%s/AppData/Local/JetBrains",
+        "RubyMine",
         "splash"
       ]
     }

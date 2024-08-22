@@ -8,6 +8,7 @@ from io import BytesIO
 from typing import Tuple
 
 from PIL import Image
+from select import select
 
 
 def get_register_value(key: int, sub_key: str, name: str) -> [str | None]:
@@ -29,10 +30,9 @@ def get_register_value(key: int, sub_key: str, name: str) -> [str | None]:
 
 
 def user_select(options: list, hint="hint") -> str:
-    for k, v in enumerate(options):
-        print(f"{k} -- {v}")
+    hint_select_items='\n'.join(f"{k} -- {v}" for k, v in enumerate(options))
     while True:
-        user_input = input(hint).strip()
+        user_input = input(f"{hint}\n{hint_select_items}\n> ").strip()
         if user_input.isdigit():
             user_input_int = int(user_input)
             if 0 <= user_input_int < len(options):
@@ -47,8 +47,17 @@ def get_installation(program_name) -> str:
     if program_name == "Android Studio":
         installation = get_register_value(winreg.HKEY_LOCAL_MACHINE, rf"SOFTWARE\{program_name}", "Path")
         return installation.replace('\\', '/') + '/'
-    installation = get_register_value(winreg.HKEY_CURRENT_USER, "Environment", program_name).removesuffix('bin;')
-    return installation.replace('\\', '/')
+    installation = get_register_value(winreg.HKEY_CURRENT_USER, "Environment", program_name)
+    try:
+        installation = installation.removesuffix('bin;').replace('\\', '/')
+        return installation
+    except:
+        print("Can't locate installation by registry, ENTER installation manually :")
+        input_installation = input().replace('\\', '/')
+        if input_installation.endswith('/'):
+            return input_installation
+        else:
+            return f'{input_installation}/'
 
 
 def get_fit_image(img_path: str, size: Tuple[int, int]) -> Image.Image:
@@ -258,9 +267,9 @@ def main(ima_path):
 
     win_user = data_dict.pop("win_user")
 
-    category = user_select(list(data_dict.keys()), "> Please select category:")
-    program_name = user_select(list(data_dict[category]), "> Please select product:")
-    operate = user_select(['extract image', 'patch', 'restore'], "> Please select operate:")
+    category = user_select(list(data_dict.keys()), "Please select category:")
+    program_name = user_select(list(data_dict[category]), "Please select product:")
+    operate = user_select(['extract image', 'patch', 'restore'], "Please select operate:")
 
     installation = get_installation(program_name)
     config = data_dict[category][program_name]
