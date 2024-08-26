@@ -247,8 +247,13 @@ def clean_cache_image(win_username, **config):
     # 构建完整路径
     final_path = '/'.join([path, match_max, sub_path])
 
+    try:
     # 列出 final_path 中的所有文件
-    all_files = os.listdir(final_path)
+        all_files = os.listdir(final_path)
+    except FileNotFoundError:
+        print(f"No such path:{final_path}")
+        return
+
 
     # 找到所有以 .ij 为后缀的文件并删除
     for file_name in all_files:
