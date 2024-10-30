@@ -211,6 +211,10 @@ def restore(root_path: str, **config):
         print(f"Restored {original_file} from backup.")
 
 
+import os
+import re
+
+
 def clean_cache_image(win_username, **config):
     cache = config.get('cache', [])
     path, fuzz_match_max, sub_path = cache
@@ -220,50 +224,32 @@ def clean_cache_image(win_username, **config):
     all_dirs = [d for d in os.listdir(path) if os.path.isdir(os.path.join(path, d))]
 
     # 使用正则表达式匹配以 fuzz_match_max 为前缀的文件夹
-    # 更新正则表达式以支持没有版本号的情况
-    pattern = re.compile(rf"^{re.escape(fuzz_match_max)}(\d+(\.\d+)*)?$")
-    matching_dirs = []
+    pattern = re.compile(rf"^{re.escape(fuzz_match_max)}")
 
-    for d in all_dirs:
-        match = pattern.match(d)
-        if match:
-            version = match.group(1)  # 如果没有版本号，version 将为 None
-            matching_dirs.append((d, version))
+    matching_dirs = [d for d in all_dirs if pattern.match(d)]
 
     if not matching_dirs:
         raise FileNotFoundError(f"No matching directory found for prefix {fuzz_match_max} in {path}")
 
-    # 先筛选出所有带版本号的文件夹
-    versioned_dirs = [d for d in matching_dirs if d[1] is not None]
+    for match_dir in matching_dirs:
+        # 构建完整路径
+        final_path = os.path.join(path, match_dir, sub_path)
 
-    if versioned_dirs:
-        # 找到版本号最大的文件夹
-        versioned_dirs.sort(key=lambda x: list(map(int, x[1].split('.'))))
-        match_max = versioned_dirs[-1][0]
-    else:
-        # 如果没有带版本号的文件夹，选择没有版本号的文件夹
-        match_max = matching_dirs[0][0]
+        try:
+            # 列出 final_path 中的所有文件
+            all_files = os.listdir(final_path)
 
-    # 构建完整路径
-    final_path = '/'.join([path, match_max, sub_path])
+            # 删除所有文件
+            for file in all_files:
+                os.remove(os.path.join(final_path, file))
 
-    try:
-    # 列出 final_path 中的所有文件
-        all_files = os.listdir(final_path)
-    except FileNotFoundError:
-        print(f"No such path:{final_path}")
-        return
+            # 删除文件夹
+            os.rmdir(final_path)
+            print(f"Deleted directory and files: {final_path}")
 
-
-    # 找到所有以 .ij 为后缀的文件并删除
-    for file_name in all_files:
-        if file_name.endswith(".ij"):
-            file_path = '/'.join([final_path, file_name])
-            try:
-                os.remove(file_path)
-                print(f"Deleted cache file: {file_path}")
-            except Exception as e:
-                print(f"Failed to delete {file_path}: {e}")
+        except FileNotFoundError:
+            print(f"No such path: {final_path}")
+            continue
 
 
 def main():
